@@ -1,22 +1,10 @@
-def duplicate_city(cities):
-    result_city = []
-    s = set()
-
-    for city in cities:
-        l1 = len(s)
-        s.add(city)
-        l2 = len(s)
-        if l1 == l2:
-            result_city.append(city)
-    return result_city
+def inters(l1, l2):
+    l3 = []
+    for v in l1:
+        if v in l2:
+            l3.append(v)
+    return l3
 
 
-cities = ['Incheon', 'Seoul', 'Incheon', 'Incheon', 'Gwangju']
-# cities = set(cities)
-# cities.add('Incheon')
-# cities.add('Suwon')
-cities.append('Incheon')
-cities.append('Seoul')
-cities.append('Suwon')
-print(cities)
-print(set(duplicate_city(cities)))
+l1 = [2, 32, 1, 44, 55, 66, 77]
+l2 = [23, 2, 6, 32, 1, 55, 66, 13, 19, 29]
