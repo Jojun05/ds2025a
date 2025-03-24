@@ -1,5 +1,5 @@
-groups = ['HOT','Seventeen','Black Pink','NJZ']
-#ratings = [1,2,4,3,100]
-ratings = [1,2,4,3]
-group_rating = list(zip(groups,ratings))
-print(group_rating)
+cities = ['Incheon','Seoul','Incheon','Incheon','Gwangju']
+cities = set(cities) #set은 중복값 제거
+cities.add('Incheon')
+cities.add('Suwon')
+print(cities)
