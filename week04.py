@@ -1,33 +1,51 @@
 class Node:
-    def __init__(self, data,link=None):
+    def __init__(self, data, link=None):
         self.data = data
         self.link = link
-# = Node("ABC")
+
+
 class LinkedList:
     def __init__(self):
         self.head = None
 
-    def append(self,data): #li 1을 가져가고 링크드리스트에 들어가서 리턴
+
+    def append(self, data):
         if not self.head:
             self.head = Node(data)
             return
         current = self.head
         while current.link:
-            current = current.link
+            current = current.link  # move current
         current.link = Node(data)
+
+
+    # def is_find(self, target):
+    def search(self, target):
+        current = self.head
+        while current.link:
+            if target == current.data:
+                return f"{target}을(를) 찾았습니다!"
+            else:
+                current = current.link
+        return  f"{target}은(는) 링크드 리스트 안에 존재하지 않습니다."
+
+
     def __str__(self):
         current = self.head
         result = ""
         while current is not None:
-           # result = result + str(current.data) + " -> "
-            result = result + f"{current.data} ->"
+            # result = result + str(current.data) + " -> "
+            result = result + f"{current.data} -> "
             current = current.link
         return result + "END"
-     #   return "Linked List"
 
-l1 = LinkedList()
-l1.append(1)
-l1.append(2)
-l1.append(3)
-l1.append(4)
-print(l1)
+
+ll = LinkedList()
+ll.append(8)
+ll.append(10)
+ll.append(-9)
+print(ll)
+# print(ll.is_find(99))
+# print(ll.is_find(10))
+print(ll.search(99))
+print(ll.search(10))
