@@ -15,9 +15,19 @@ class LinkedList:
         while current.link:
             current = current.link
         current.link = Node(data)
+    def __str__(self):
+        current = self.head
+        result = ""
+        while current is not None:
+            #print(current.data)
+            result = result + str(current.data) + " -> "
+            current = current.link
+        return result + "END"
+     #   return "Linked List"
+
 l1 = LinkedList()
 l1.append(1)
 l1.append(2)
 l1.append(3)
 l1.append(4)
-
+print(l1)
