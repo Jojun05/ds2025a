@@ -1,11 +1,18 @@
-s1 = []
-s1.append("Data structure") #push
-s1.append("Database")
-print(s1[-1]) #peek처럼 동작하는얘
-print(s1)
-print(s1.pop()) #pop이라서 삭제
-print(s1)
-print(s1.pop()) #pop이라서 삭제
-print(s1)
-print(s1.pop()) #indexerr
-print(s1)
+#print(1+2))
+def is_valid_parentheses(expression : str) -> bool: #tyoe hint new
+    stack = list()
+    for letter in expression:
+        if letter == "(":
+            stack.append(letter)
+        if letter == ")":
+            if len(stack) == 0:
+                return False #)1+2(),(1+2_))
+            else:
+                stack.pop()
+    return len(stack)==0 # (1+2),((3*2)/2)
+
+print(is_valid_parentheses(")1+2()"))
+print(is_valid_parentheses("(1+2))"))
+print(is_valid_parentheses("(1+2)"))
+print(is_valid_parentheses("((3*2)/2)"))
+print(is_valid_parentheses("((3*2/2)"))
