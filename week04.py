@@ -54,7 +54,7 @@ class LinkedList:
             current = current.link
         return result + "END"
 
-
+#append search remove <- 이거 배웠음
 
 
 ll = LinkedList()
