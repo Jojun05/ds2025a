@@ -25,10 +25,17 @@ class Stack:
         popped_node.link = None
         return popped_node.data
 
+    def peek(self): #peek이 탑을 가르키고 있어서 top.data임
+        return self.top.data
+
 
 s1 = Stack()
-print(s1.pop())
+#print(s1.pop())
 s1.push("Data structure")
 s1.push("Database")
-print(s1.pop())
-print(s1.pop())
+#print(s1.pop())
+s1.pop() #<- 이건 database를 없앤것
+print(s1.peek())
+#for i in range(2):
+#print(s1.pop())
+
