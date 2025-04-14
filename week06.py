@@ -23,8 +23,10 @@ class Queue:
         if self.front is None:
             raise  IndexError("Queue is empty")
         self.size = self.size - 1
+
         temp = self.front
         self.front = self.front.link #move 프론트증가
+        temp.link = None
         if self.front is None:
             self.rear = None
         return temp.data
