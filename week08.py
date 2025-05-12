@@ -75,11 +75,17 @@ def delete(node, value):
     elif value > node.data:
         node.right = delete(node.right, value)
     else:  # 같은 경우. 삭제할 노드를 찾음
-        # leaf 노드거나 자식이 1개 인 경우의 노드를 삭제
+        # leaf 노드 거나 자식이 1개 인 경우의 노드를 삭제
         if node.left is None:
             return node.right
         elif node.right is None:
             return node.left
+        # 자식이 2개인 노드를 삭제
+        max_larger_node = node.left
+        while max_larger_node.right:
+            max_larger_node = max_larger_node.right #move
+        node.data = max_larger_node.data
+        node.left = delete(node.left , max_larger_node.data)
     return node
 
 if __name__ == "__main__":
@@ -97,11 +103,6 @@ if __name__ == "__main__":
     pre_order(root)
     print()
 
-    find_number = int(input("찾는 수는? "))
-    if search(find_number):
-        print(f"{find_number}을(를) 찾았습니다")
-    else:
-        print(f"{find_number}이(가) 존재하지 않습니다")
 
     delete_number = int(input("제거할 숫자는? "))
     root = delete(root, delete_number)
