@@ -1,4 +1,9 @@
-# BST
+class TreeNode:
+	def __init__(self):
+		self.left = None
+		self.data = None
+		self.right = None
+
 
 def pre_order(node):
     if node is None:
@@ -23,13 +28,12 @@ def post_order(node):
     post_order(node.right)
     print(node.data, end="->")
 
-def search(find_number):
 
+def search(find_number):
     current = root
     while True:
         if find_number == current.data:
             return True
-
         elif find_number < current.data:
             if current.left is None:
                 return False
@@ -38,13 +42,6 @@ def search(find_number):
             if current.right is None:
                 return False
             current = current.right
-
-
-class TreeNode:
-	def __init__(self):
-		self.left = None
-		self.data = None
-		self.right = None
 
 
 def insert(root, value):
@@ -68,6 +65,23 @@ def insert(root, value):
             current = current.right  # 이동
     return root
 
+
+def delete(node, value):
+    if node is None:
+        return None
+
+    if value < node.data:
+        node.left = delete(node.left, value)
+    elif value > node.data:
+        node.right = delete(node.right, value)
+    else:  # 같은 경우. 삭제할 노드를 찾음
+        # leaf 노드거나 자식이 1개 인 경우의 노드를 삭제
+        if node.left is None:
+            return node.right
+        elif node.right is None:
+            return node.left
+    return node
+
 if __name__ == "__main__":
     numbers = [10, 15, 8, 3, 9, 100, 7, 13]
     root = None
@@ -78,27 +92,22 @@ if __name__ == "__main__":
     print('BST 구성 완료')
     post_order(root)
     print()
+    in_order(root)
+    print()
+    pre_order(root)
+    print()
+
     find_number = int(input("찾는 수는? "))
     if search(find_number):
-        print(f"{find_number}을(를) 찾았습니다")  # return True
+        print(f"{find_number}을(를) 찾았습니다")
     else:
-        print(f"{find_number}이(가) 존재하지 않습니다")  # return False
+        print(f"{find_number}이(가) 존재하지 않습니다")
 
-
-
-    # find_number = int(input())
-    # current = root
-    # while True:
-    #     if find_number == current.data:
-    #         print(f"{find_number}을(를) 찾았습니다")
-    #         break
-    #     elif find_number < current.data:
-    #         if current.left is None:
-    #             print(f"{find_number}이(가) 존재하지 않습니다")
-    #             break
-    #         current = current.left
-    #     else:
-    #         if current.right is None:
-    #             print(f"{find_number}이(가) 존재하지 않습니다")
-    #             break
-    #         current = current.right
+    delete_number = int(input("제거할 숫자는? "))
+    root = delete(root, delete_number)
+    post_order(root)
+    print()
+    in_order(root)
+    print()
+    pre_order(root)
+    print()
