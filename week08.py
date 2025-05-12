@@ -83,7 +83,7 @@ def delete(node, value):
         # 자식이 2개인 노드를 삭제
         max_larger_node = node.left
         while max_larger_node.right:
-            max_larger_node = max_larger_node.right #move
+            max_larger_node = max_larger_node.right #1move
         node.data = max_larger_node.data
         node.left = delete(node.left , max_larger_node.data)
     return node
